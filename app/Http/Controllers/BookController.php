@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Models\Genre;
 use App\Models\Writer;
 use Illuminate\Http\Request;
 
@@ -43,6 +44,14 @@ class BookController extends Controller
         return view('books', [
             "title" => $writer->name,
             "books" => $writer->book
+        ]);
+    }
+
+    public function genresort(Genre $genre)
+    {
+        return view('books', [
+            "title" => $genre->name_genre,
+            "books" => $genre->book
         ]);
     }
 }
