@@ -17,9 +17,9 @@ class BookFactory extends Factory
     public function definition()
     {
         return [
+            'writer_id' => mt_rand(1, 5),
             'title' => $this->faker->sentence(mt_rand(1, 5)),
             'slug' => $this->faker->slug(),
-            'writer' => $this->faker->name(),
             'author' => $this->faker->company(),
             'total_pages' => $this->faker->numberBetween(100, 600),
             'publish_year' => $this->faker->year(),
