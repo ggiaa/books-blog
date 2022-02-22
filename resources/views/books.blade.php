@@ -14,7 +14,7 @@
                             <h4 class="card-title mb-1">{{ $book->title }}</h4>
                             <p class="card-text text-muted mb-2"><small><a href="" class="text-muted" style="text-decoration: none">{{ $book->writer }}</a></small></p> 
                             <p class="card-text mb-3" style="text-align: justify">{{ $book->excerpt }}</p> 
-                            <a href="" style="text-decoration: none">Continue reading</a>                              
+                            <a href="/books/{{ $book->id }}" style="text-decoration: none">Continue reading</a>                              
                         </div>
                     </div>
 

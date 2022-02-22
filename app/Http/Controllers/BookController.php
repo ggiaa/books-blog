@@ -28,4 +28,12 @@ class BookController extends Controller
             "title" => "ABOUT"
         ]);
     }
+
+    public function detail($id)
+    {
+        return view('book', [
+            "title" => "BOOK",
+            "book" => Book::firstWhere('id', $id)
+        ]);
+    }
 }
