@@ -20,3 +20,4 @@ Route::get('/about', [BookController::class, 'about']);
 Route::get('/books/{book:slug}', [BookController::class, 'detail']);
 Route::get('/book/{writer:username}', [BookController::class, 'sort']);
 Route::get('/genre/{genre:slug_name}', [BookController::class, 'genresort']);
+Route::get('/categories', [BookController::class, 'category_list']);

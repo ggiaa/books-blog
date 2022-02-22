@@ -54,4 +54,13 @@ class BookController extends Controller
             "books" => $genre->book
         ]);
     }
+
+    public function category_list()
+    {
+        return view('categories', [
+            "title" => "CATEGORIES",
+            "fiction" => Genre::where('category_id', 1)->get(),
+            "nonfiction" => Genre::where('category_id', 2)->get()
+        ]);
+    }
 }

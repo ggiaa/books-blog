@@ -10,6 +10,9 @@
             <li class="nav-item" style="padding-right: 25px">
                 <a class="nav-link {{ request::is('books*') ? 'active' : '' }}" href="/books"><strong>BOOKS</strong></a>
             </li>
+            <li class="nav-item" style="padding-right: 25px">
+                <a class="nav-link {{ request::is('categories') ? 'active' : '' }}" href="/categories"><strong>CATEGORY</strong></a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link {{ request::is('about') ? 'active' : '' }}" href="/about"><strong>ABOUT</strong></a>
             </li>
