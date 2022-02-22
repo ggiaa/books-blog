@@ -12,7 +12,7 @@
                           <table class="table mt-4" style="width:100%">
                             <tr>
                               <th style="width:20%">Genre</th>
-                              <td>{{ $book->category->name_category }}</td>
+                              <td>{{ $book->genre->genre_name }}</td>
                             </tr>
                             <tr>
                               <th>Writer</th>
