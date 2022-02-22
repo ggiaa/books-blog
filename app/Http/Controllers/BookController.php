@@ -29,11 +29,11 @@ class BookController extends Controller
         ]);
     }
 
-    public function detail($id)
+    public function detail(Book $book)
     {
         return view('book', [
             "title" => "BOOK",
-            "book" => Book::firstWhere('id', $id)
+            "book" => $book
         ]);
     }
 }
