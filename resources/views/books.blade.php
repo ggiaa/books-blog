@@ -10,7 +10,7 @@
 
                     <div class="col-md-8">                        
                         <div class="card-body">
-                            <strong class="d-inline-block mb-3 text-danger">{{ $book->genre->genre_name }}</strong>                            
+                            <strong class="d-inline-block mb-3 text-danger">{{ $book->genre->category->name_category }}</strong> / <strong class="d-inline-block mb-3 text-danger">{{ $book->genre->genre_name }}</strong>                            
                             <h4 class="card-title mb-1">{{ $book->title }}</h4>
                             <p class="card-text text-muted mb-2"><small><a href="/book/{{ $book->writer->username }}" class="text-muted" style="text-decoration: none">{{ $book->writer->name }}</a></small></p> 
                             <p class="card-text mb-3" style="text-align: justify">{{ $book->excerpt }}</p> 
