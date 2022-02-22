@@ -16,7 +16,7 @@
                             </tr>
                             <tr>
                               <th>Writer</th>
-                              <td>{{ $book->writer }}</td>
+                              <td>{{ $book->writer->name }}</td>
                             </tr>
                             <tr>
                               <th>Published on</th>
