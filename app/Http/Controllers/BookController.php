@@ -20,7 +20,7 @@ class BookController extends Controller
     {
         return view('books', [
             "title" => "BOOKS",
-            "books" => Book::all()
+            "books" => Book::with(['writer', 'genre', 'genre.category'])->get()->all()
         ]);
     }
 
@@ -43,7 +43,7 @@ class BookController extends Controller
     {
         return view('books', [
             "title" => $writer->name,
-            "books" => $writer->book
+            "books" => $writer->book->load('writer', 'genre', 'genre.category')
         ]);
     }
 
@@ -51,7 +51,7 @@ class BookController extends Controller
     {
         return view('books', [
             "title" => $genre->name_genre,
-            "books" => $genre->book
+            "books" => $genre->book->load('writer', 'genre', 'genre.category')
         ]);
     }
 
