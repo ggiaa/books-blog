@@ -13,4 +13,9 @@ class Category extends Model
     {
         return $this->hasMany(Genre::class);
     }
+
+    public function books()
+    {
+        return $this->hasManyThrough(Book::class, Genre::class);
+    }
 }

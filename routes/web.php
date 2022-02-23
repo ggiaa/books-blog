@@ -21,3 +21,4 @@ Route::get('/books/{book:slug}', [BookController::class, 'detail']);
 Route::get('/book/{writer:username}', [BookController::class, 'sort']);
 Route::get('/genre/{genre:slug_name}', [BookController::class, 'genresort']);
 Route::get('/categories', [BookController::class, 'category_list']);
+Route::get('/category/{category:category_slug}', [BookController::class, 'categorysort']);

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Models\Category;
 use App\Models\Genre;
 use App\Models\Writer;
 use Illuminate\Http\Request;
@@ -61,6 +62,14 @@ class BookController extends Controller
             "title" => "CATEGORIES",
             "fiction" => Genre::where('category_id', 1)->get(),
             "nonfiction" => Genre::where('category_id', 2)->get()
+        ]);
+    }
+
+    public function categorysort(Category $category)
+    {
+        return view('books', [
+            "title" => $category->name_category,
+            "books" => $category->books()->get()->load(['genre', 'writer', 'genre.category'])
         ]);
     }
 }
