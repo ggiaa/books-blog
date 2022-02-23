@@ -17,18 +17,19 @@ class BookController extends Controller
         ]);
     }
 
-    public function allbooks()
-    {
-        return view('books', [
-            "title" => "BOOKS",
-            "books" => Book::with(['writer', 'genre', 'genre.category'])->get()->all()
-        ]);
-    }
-
     public function about()
     {
         return view('about', [
             "title" => "ABOUT"
+        ]);
+    }
+
+    public function allbooks()
+    {
+        return view('books', [
+            "title" => "BOOKS",
+            "subtitle" => "All Books",
+            "books" => Book::with(['writer', 'genre', 'genre.category'])->get()->all()
         ]);
     }
 
@@ -44,6 +45,7 @@ class BookController extends Controller
     {
         return view('books', [
             "title" => $writer->name,
+            "subtitle" => 'Books by ' . $writer->name,
             "books" => $writer->book->load('writer', 'genre', 'genre.category')
         ]);
     }
@@ -51,7 +53,8 @@ class BookController extends Controller
     public function genresort(Genre $genre)
     {
         return view('books', [
-            "title" => $genre->name_genre,
+            "title" => $genre->genre_name,
+            "subtitle" => 'All ' . $genre->genre_name . 'genre',
             "books" => $genre->book->load('writer', 'genre', 'genre.category')
         ]);
     }
@@ -69,6 +72,7 @@ class BookController extends Controller
     {
         return view('books', [
             "title" => $category->name_category,
+            "subtitle" => 'All ' . $category->name_category . ' category',
             "books" => $category->books()->get()->load(['genre', 'writer', 'genre.category'])
         ]);
     }

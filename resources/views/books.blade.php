@@ -1,7 +1,10 @@
 @extends('layouts.main')
 
 @section('content') 
-<div class="container mt-2">
+<div class="container mt-3">
+    <div class="row mb-3">
+        <h4>Show {{ $subtitle }}</h4>
+    </div>
     <div class="row">      
         @foreach ($books as $book)                                       
         <div class="col-md-6">
