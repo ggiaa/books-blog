@@ -12,11 +12,11 @@
                           <table class="table mt-4" style="width:100%">
                             <tr>
                               <th style="width:20%">Genre</th>
-                              <td>{{ $book->genre->genre_name }}</td>
+                              <td><a href="/genre/{{ $book->genre->slug_name }}" style="text-decoration: none">{{ $book->genre->genre_name }}</a></td>
                             </tr>
                             <tr>
                               <th>Writer</th>
-                              <td>{{ $book->writer->name }}</td>
+                              <td><a href="/book/{{ $book->writer->username }}" style="text-decoration: none">{{ $book->writer->name }}</a></td>
                             </tr>
                             <tr>
                               <th>Published on</th>
