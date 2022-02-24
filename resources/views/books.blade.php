@@ -3,7 +3,7 @@
 @section('content') 
 <div class="container mt-3">
     <div class="row mb-3">
-        <h4>Show {{ $subtitle }}</h4>
+        <h4>Subject <span class="text-danger">{{ $subtitle }}</span></h4>
     </div>
     <div class="row">      
         @foreach ($books as $book)                                       

@@ -54,7 +54,7 @@ class BookController extends Controller
     {
         return view('books', [
             "title" => $genre->genre_name,
-            "subtitle" => 'All ' . $genre->genre_name . 'genre',
+            "subtitle" => $genre->genre_name,
             "books" => $genre->book->load('writer', 'genre', 'genre.category')
         ]);
     }
@@ -72,7 +72,7 @@ class BookController extends Controller
     {
         return view('books', [
             "title" => $category->name_category,
-            "subtitle" => 'All ' . $category->name_category . ' category',
+            "subtitle" => $category->name_category,
             "books" => $category->books()->get()->load(['genre', 'writer', 'genre.category'])
         ]);
     }
