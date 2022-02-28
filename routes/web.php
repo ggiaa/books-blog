@@ -1,7 +1,9 @@
 <?php
 
-use App\Http\Controllers\BookController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BookController;
+use App\Http\Controllers\SigninController;
+use App\Http\Controllers\SignupController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +24,7 @@ Route::get('/book/{writer:username}', [BookController::class, 'sort']);
 Route::get('/genre/{genre:slug_name}', [BookController::class, 'genresort']);
 Route::get('/categories', [BookController::class, 'category_list']);
 Route::get('/category/{category:category_slug}', [BookController::class, 'categorysort']);
+
+//admin route
+Route::get('/sign-in', [SigninController::class, 'index']);
+Route::get('/sign-up', [SignupController::class, 'index']);
