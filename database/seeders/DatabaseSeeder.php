@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
-        Book::factory(25)->create();
+        Book::factory(100)->create();
         Writer::factory(5)->create();
 
         Category::create([
@@ -44,7 +44,7 @@ class DatabaseSeeder extends Seeder
         Genre::create([
             "category_id" => "1",
             "genre_name" => "Action & Adventure",
-            "slug_name" => "action-&-adventure"
+            "slug_name" => "action-and-adventure"
         ]);
         Genre::create([
             "category_id" => "1",
@@ -89,12 +89,12 @@ class DatabaseSeeder extends Seeder
         Genre::create([
             "category_id" => "2",
             "genre_name" => "Food & Drink",
-            "slug_name" => "food-&-drink"
+            "slug_name" => "food-and-drink"
         ]);
         Genre::create([
             "category_id" => "2",
             "genre_name" => "Art & Photography",
-            "slug_name" => "art-&-photography"
+            "slug_name" => "art-and-photography"
         ]);
         Genre::create([
             "category_id" => "2",
@@ -124,17 +124,17 @@ class DatabaseSeeder extends Seeder
         Genre::create([
             "category_id" => "2",
             "genre_name" => "Humanities & Social Sciences",
-            "slug_name" => "humanities-&-social-sciences"
+            "slug_name" => "humanities-and-social-sciences"
         ]);
         Genre::create([
             "category_id" => "2",
             "genre_name" => "Parenting & Families",
-            "slug_name" => "parenting-&-families"
+            "slug_name" => "parenting-and-families"
         ]);
         Genre::create([
             "category_id" => "2",
             "genre_name" => "Science & Technology",
-            "slug_name" => "science-&-technology"
+            "slug_name" => "science-and-technology"
         ]);
     }
 }

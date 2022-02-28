@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 
 class BookController extends Controller
 {
+
     public function index()
     {
         return view('home', [
@@ -26,10 +27,26 @@ class BookController extends Controller
 
     public function allbooks()
     {
+        $subtitle = 'All Subjects';
+        if (request('genre')) {
+            $genre = Genre::firstWhere('slug_name', request('genre'));
+            $subtitle = $genre->genre_name;
+        }
+
+        if (request('writer')) {
+            $writer = Writer::firstWhere('username', request('writer'));
+            $subtitle = $writer->name;
+        }
+
+        if (request('category')) {
+            $category = Category::firstWhere('category_slug', request('category'));
+            $subtitle = $category->name_category;
+        }
+
         return view('books', [
             "title" => "BOOKS",
-            "subtitle" => "All Books",
-            "books" => Book::with(['writer', 'genre', 'genre.category'])->get()->all()
+            "subtitle" => $subtitle,
+            "books" => Book::latest()->filter(request(['search', 'genre', 'writer', 'category']))->get()
         ]);
     }
 
@@ -41,39 +58,12 @@ class BookController extends Controller
         ]);
     }
 
-    public function sort(Writer $writer)
-    {
-        return view('books', [
-            "title" => $writer->name,
-            "subtitle" => 'Books by ' . $writer->name,
-            "books" => $writer->book->load('writer', 'genre', 'genre.category')
-        ]);
-    }
-
-    public function genresort(Genre $genre)
-    {
-        return view('books', [
-            "title" => $genre->genre_name,
-            "subtitle" => $genre->genre_name,
-            "books" => $genre->book->load('writer', 'genre', 'genre.category')
-        ]);
-    }
-
     public function category_list()
     {
         return view('categories', [
             "title" => "CATEGORIES",
             "fiction" => Genre::where('category_id', 1)->get(),
             "nonfiction" => Genre::where('category_id', 2)->get()
-        ]);
-    }
-
-    public function categorysort(Category $category)
-    {
-        return view('books', [
-            "title" => $category->name_category,
-            "subtitle" => $category->name_category,
-            "books" => $category->books()->get()->load(['genre', 'writer', 'genre.category'])
         ]);
     }
 }
