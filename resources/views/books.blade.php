@@ -42,7 +42,7 @@
                     </div>
 
                     <div class="col-md-4">
-                        <img src="" class="img-fluid rounded-end rounded-start">
+                        <img src="http://source.unsplash.com/800x1280?{{ $book->genre->genre_name }}" class="img-fluid rounded-end rounded-start">
                     </div>
 
                 </div>

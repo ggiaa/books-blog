@@ -4,7 +4,7 @@
     <div class="container">
         <div class="container">
             <div class="row">
-                <div class="card mb-5">
+                <div class="card mb-5 mt-3">
                     <div class="row g-0">              
                       <div class="col-md-8">
                         <div class="card-body">   
@@ -43,7 +43,7 @@
                         </div>
                       </div>
                       <div class="col-md-4" style="margin: auto; display: block">
-                        <img src="" class="img-fluid my-lg-3" >
+                        <img src="http://source.unsplash.com/800x1280?{{ $book->genre->genre_name }}" class="img-fluid my-lg-3" >
                       </div>
                     </div>
                 </div>        

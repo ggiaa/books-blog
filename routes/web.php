@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\SigninController;
 use App\Http\Controllers\SignupController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,5 +27,11 @@ Route::get('/categories', [BookController::class, 'category_list']);
 Route::get('/category/{category:category_slug}', [BookController::class, 'categorysort']);
 
 //admin route
-Route::get('/sign-in', [SigninController::class, 'index']);
-Route::get('/sign-up', [SignupController::class, 'index']);
+Route::get('/sign-in', [SigninController::class, 'index'])->name('login')->middleware('guest');
+Route::post('/sign-in', [SigninController::class, 'authenticate']);
+Route::post('/sign-out', [SigninController::class, 'signout']);
+
+Route::get('/sign-up', [SignupController::class, 'index'])->middleware('guest');
+Route::post('/sign-up', [SignupController::class, 'store']);
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');

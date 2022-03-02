@@ -16,9 +16,29 @@
             <li class="nav-item" style="padding-right: 20px">
                 <a class="nav-link {{ request::is('about') ? 'active' : '' }}" href="/about"><strong>ABOUT</strong></a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link {{ request::is('sign-in') ? 'active' : '' }}" href="/sign-in"><i class="bi bi-box-arrow-in-right"></i><strong> SIGN IN</strong></a>
-            </li>
+
+            @auth
+                <li class="nav-item dropdown">
+                    
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Hello, {{ auth()->user()->name }}
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="/dashboard"><i class="bi bi-house-door"></i> My Dashboard</a></li>                    
+                        <li><hr class="dropdown-divider"></li>                    
+                        <form action="/sign-out" method="post">
+                            @csrf
+                            <button class="dropdown-item" type="submit"><i class="bi bi-box-arrow-right"></i> Sign-Out</a></button>
+                        </form>
+                    </ul>
+                
+                </li>
+            @else
+                <li class="nav-item">
+                    <a class="nav-link {{ request::is('sign-in') ? 'active' : '' }}" href="/sign-in"><i class="bi bi-box-arrow-in-right"></i><strong> SIGN IN</strong></a>
+                </li>                
+            @endauth
         </div>
         
     </div>
