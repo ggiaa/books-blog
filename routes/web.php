@@ -5,6 +5,7 @@ use App\Http\Controllers\BookController;
 use App\Http\Controllers\SigninController;
 use App\Http\Controllers\SignupController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DashboardBookController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,4 +35,8 @@ Route::post('/sign-out', [SigninController::class, 'signout']);
 Route::get('/sign-up', [SignupController::class, 'index'])->middleware('guest');
 Route::post('/sign-up', [SignupController::class, 'store']);
 
+//dashboard view
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
+
+//dashbord route
+Route::resource('/dashboard/books', DashboardBookController::class)->middleware('auth');
