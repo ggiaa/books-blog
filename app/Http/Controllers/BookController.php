@@ -58,7 +58,7 @@ class BookController extends Controller
         ]);
     }
 
-    public function category_list()
+    public function genre_list()
     {
         return view('categories', [
             "title" => "CATEGORIES",

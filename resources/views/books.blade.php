@@ -32,7 +32,7 @@
 
                     <div class="col-md-8">                        
                         <div class="card-body">
-                            <p class="d-inline-block mb-3"><a style="text-decoration: none" class="text-danger" href="/books?category={{ $book->genre->category->category_slug }}">{{ $book->genre->category->name_category }}</a></p> / 
+                            {{-- <p class="d-inline-block mb-3"><a style="text-decoration: none" class="text-danger" href="/books?category={{ $book->genre->category->category_slug }}">{{ $book->genre->category->name_category }}</a></p> /  --}}
                             <p class="d-inline-block mb-3"><a style="text-decoration: none" class="text-danger" href="/books?genre={{ $book->genre->slug_name }}">{{ $book->genre->genre_name }}</a></p>                            
                             <h4 class="card-title mb-1">{{ $book->title }}</h4>
                             <p class="card-text text-muted mb-2"><small><a href="/books?writer={{ $book->writer->username }}" class="text-muted" style="text-decoration: none">{{ $book->writer->name }}</a></small></p> 

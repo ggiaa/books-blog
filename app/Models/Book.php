@@ -4,11 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Cviebrock\EloquentSluggable\Sluggable;
 use PhpParser\Node\Stmt\Catch_;
 
 class Book extends Model
 {
-    use HasFactory;
+    use HasFactory, Sluggable;
     protected $with = ['writer', 'genre', 'genre.category'];
 
     public function scopeFilter($query, array $filters)
@@ -34,11 +35,11 @@ class Book extends Model
             )
         );
 
-        $query->when($filters['category'] ?? false, function ($query, $category) {
-            return $query->whereHas('genre.category', function ($query) use ($category) {
-                $query->where('category_slug', $category);
-            });
-        });
+        // $query->when($filters['category'] ?? false, function ($query, $category) {
+        //     return $query->whereHas('genre.category', function ($query) use ($category) {
+        //         $query->where('category_slug', $category);
+        //     });
+        // });
     }
 
     public function writer()
@@ -54,5 +55,14 @@ class Book extends Model
     public function getRouteKeyName()
     {
         return 'slug';
+    }
+
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
     }
 }

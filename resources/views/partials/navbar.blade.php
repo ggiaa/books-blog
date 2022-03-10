@@ -11,7 +11,7 @@
                 <a class="nav-link {{ request::is(['books*', 'category*', 'genre*','book*']) ? 'active' : '' }}" href="/books"><strong>BOOKS</strong></a>
             </li>
             <li class="nav-item" style="padding-right: 20px">
-                <a class="nav-link {{ request::is('categories') ? 'active' : '' }}" href="/categories"><strong>CATEGORY</strong></a>
+                <a class="nav-link {{ request::is('list') ? 'active' : '' }}" href="/list"><strong>GENRE LIST</strong></a>
             </li>
             <li class="nav-item" style="padding-right: 20px">
                 <a class="nav-link {{ request::is('about') ? 'active' : '' }}" href="/about"><strong>ABOUT</strong></a>

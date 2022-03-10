@@ -6,7 +6,7 @@
             <h3 class="mb-4 mt-3 text-danger"><i class="bi bi-list"></i> Fiction Category</h3>
             @foreach ($fiction as $fic)                            
             <div class="col-md-2 mb-3">
-                <a href="/genre/{{ $fic->slug_name }}">
+                <a href="/books?genre={{ $fic->slug_name }}">
                 <div class="card bg-dark text-white">
                     <img src="http://source.unsplash.com/300x200?{{ $fic->genre_name }}" class="card-img">
                     <div class="card-img-overlay d-flex align-items-center p-0">
@@ -22,7 +22,7 @@
             <h3 class="mb-4 mt-3 text-danger"> <i class="bi bi-list"></i> Nonfiction Category</h3>
             @foreach ($nonfiction as $nonfic)                            
             <div class="col-md-2 mb-3">
-                <a href="/genre/{{ $nonfic->slug_name }}">
+                <a href="/books?genre={{ $nonfic->slug_name }}">
                 <div class="card bg-dark text-white">
                     <img src="http://source.unsplash.com/300x200?{{ $nonfic->genre_name }}" class="card-img">
                     <div class="card-img-overlay d-flex align-items-center p-0">

@@ -24,7 +24,7 @@ Route::get('/about', [BookController::class, 'about']);
 Route::get('/books/{book:slug}', [BookController::class, 'detail']);
 Route::get('/book/{writer:username}', [BookController::class, 'sort']);
 Route::get('/genre/{genre:slug_name}', [BookController::class, 'genresort']);
-Route::get('/categories', [BookController::class, 'category_list']);
+Route::get('/list', [BookController::class, 'genre_list']);
 Route::get('/category/{category:category_slug}', [BookController::class, 'categorysort']);
 
 //admin route
@@ -38,5 +38,7 @@ Route::post('/sign-up', [SignupController::class, 'store']);
 //dashboard view
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
 
+
+Route::get('dashboard/books/checkSlug', [DashboardBookController::class, 'checkSlug']);
 //dashbord route
 Route::resource('/dashboard/books', DashboardBookController::class)->middleware('auth');

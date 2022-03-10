@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Models\Category;
+use App\Models\Genre;
 use Illuminate\Http\Request;
+use Cviebrock\EloquentSluggable\Services\SlugService;
 
 class DashboardBookController extends Controller
 {
@@ -26,7 +29,11 @@ class DashboardBookController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.books.create', [
+            "title" => "ADD",
+            "categories" => Category::all(),
+            "genres" => Genre::all()
+        ]);
     }
 
     /**
@@ -37,7 +44,7 @@ class DashboardBookController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $request;
     }
 
     /**
@@ -49,7 +56,7 @@ class DashboardBookController extends Controller
     public function show(Book $book)
     {
         return view('dashboard.books.detail', [
-            "book" => $book
+            "book" => $book,
         ]);
     }
 
@@ -85,5 +92,11 @@ class DashboardBookController extends Controller
     public function destroy(Book $book)
     {
         //
+    }
+
+    public function checkSlug(Request $request)
+    {
+        $slug = SlugService::createSlug(Book::class, 'slug', $request->title);
+        return response()->json(['slug' => $slug]);
     }
 }

@@ -7,6 +7,10 @@
         <h1 class="h2">Books</h1>            
     </div>
 
+    <div class="mb-3 d-flex justify-content-end">
+        <a href="/dashboard/books/create" class="btn btn-primary"><span data-feather="plus"></span> Add New Book</a>
+    </div>
+
     <div class="row">
         <div class="table-responsive">
             <table class="table table-hover table-sm">
