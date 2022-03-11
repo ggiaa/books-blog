@@ -20,7 +20,7 @@
                             </tr>
                             <tr>
                               <th>Published on</th>
-                              <td>{{ $book->publish_year }}</td>
+                              <td>{{ date('F Y', strtotime($book->publish_year)) }}</td>
                             </tr>
                             <tr>
                               <th>Total Pages</th>
@@ -28,7 +28,7 @@
                             </tr>
                             <tr>
                               <th>Published by</th>
-                              <td>{{ $book->author }}</td>
+                              <td>{{ $book->publisher->company_name }}</td>
                             </tr>
                             <tr>
                               <th>Price</th>
@@ -36,7 +36,7 @@
                             </tr>
                             <tr>
                               <th>Synopsis</th>                      
-                              <td style="text-align: justify">{{ $book->synopsis }}</td>                      
+                              <td style="text-align: justify">{!! $book->synopsis !!}</td>                      
                             </tr>
                           </table>               
                           <a href="/books" class="btn btn-primary"><i class="bi bi-arrow-left"></i> Back</a>                  

@@ -7,6 +7,15 @@
         <h1 class="h2">Books</h1>            
     </div>
 
+    @if (session('success'))
+        <div class="alert alert-primary alert-dismissible fade show" role="alert">
+            {{ session('success') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>        
+    @endif
+
     <div class="mb-3 d-flex justify-content-end">
         <a href="/dashboard/books/create" class="btn btn-primary"><span data-feather="plus"></span> Add New Book</a>
     </div>

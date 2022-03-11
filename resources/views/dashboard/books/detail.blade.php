@@ -14,7 +14,7 @@
         <div class="row">
             <div class="mb-5">
                 <div class="row g-0">
-                    <div class="col-md-7">
+                    <div class="col-md-8">
                         <div class="card-body">                
                             <h3 class="card-title" style="text-align: center">{{ $book->title }}</h3>
                             <table class="table mt-3" style="width:100%">
@@ -28,7 +28,7 @@
                                 </tr>
                                 <tr>
                                     <th>Published on</th>
-                                    <td>{{ $book->publish_year }}</td>
+                                    <td>{{ date('F Y', strtotime($book->publish_year)) }}</td>
                                 </tr>
                                 <tr>
                                     <th>Total Pages</th>
@@ -36,7 +36,7 @@
                                 </tr>
                                 <tr>
                                     <th>Published by</th>
-                                    <td>{{ $book->author }}</td>
+                                    <td>{{ $book->publisher->company_name }}</td>
                                 </tr>
                                 <tr>
                                     <th>Price</th>
@@ -44,12 +44,12 @@
                                 </tr>
                                 <tr>
                                     <th>Synopsis</th>
-                                    <td style="text-align: justify">{{ $book->synopsis }}</td>
+                                    <td style="text-align: justify">{!! $book->synopsis !!}</td>
                                 </tr>
                             </table>
                         </div>
                     </div>
-                    <div class="col-md-5" style="margin: auto; display: block;">
+                    <div class="col-md-3" style="margin: auto; display: block;">
                         <img src="http://source.unsplash.com/400x640?{{ $book->genre->genre_name }}" class="img-fluid my-lg-3">
                     </div>
                 </div>

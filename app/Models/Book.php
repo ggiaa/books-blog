@@ -11,6 +11,8 @@ class Book extends Model
 {
     use HasFactory, Sluggable;
     protected $with = ['writer', 'genre', 'genre.category'];
+    protected $guarded = ['id'];
+
 
     public function scopeFilter($query, array $filters)
     {
@@ -42,6 +44,7 @@ class Book extends Model
         // });
     }
 
+
     public function writer()
     {
         return $this->belongsTo(Writer::class);
@@ -50,6 +53,11 @@ class Book extends Model
     public function genre()
     {
         return $this->belongsTo(Genre::class);
+    }
+
+    public function publisher()
+    {
+        return $this->belongsTo(Publisher::class);
     }
 
     public function getRouteKeyName()

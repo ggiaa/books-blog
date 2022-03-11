@@ -17,11 +17,11 @@ return new class extends Migration
             $table->id();
             $table->foreignId('genre_id');
             $table->foreignId('writer_id');
+            $table->foreignId('publisher_id');
             $table->string('title');
             $table->string('slug');
-            $table->string('author');
             $table->integer('total_pages');
-            $table->integer('publish_year');
+            $table->date('publish_year');
             $table->integer('price');
             $table->text('excerpt');
             $table->text('synopsis');

@@ -6,6 +6,7 @@ use App\Models\Book;
 use App\Models\Genre;
 use App\Models\Writer;
 use App\Models\Category;
+use App\Models\Publisher;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
@@ -21,6 +22,7 @@ class DatabaseSeeder extends Seeder
         \App\Models\User::factory(3)->create();
         Book::factory(200)->create();
         Writer::factory(5)->create();
+        Publisher::factory(5)->create();
 
         Category::create([
             "name_category" => "Fiction",

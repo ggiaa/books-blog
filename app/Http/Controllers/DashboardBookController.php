@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
-use App\Models\Category;
 use App\Models\Genre;
+use App\Models\Writer;
+use App\Models\Category;
+use App\Models\Publisher;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 
@@ -31,8 +34,9 @@ class DashboardBookController extends Controller
     {
         return view('dashboard.books.create', [
             "title" => "ADD",
-            "categories" => Category::all(),
-            "genres" => Genre::all()
+            "genres" => Genre::orderBy('genre_name', 'ASC')->get(),
+            "writers" => Writer::orderBy('name', 'ASC')->get(),
+            "publishers" => Publisher::orderBy('company_name', 'ASC')->get(),
         ]);
     }
 
@@ -44,7 +48,22 @@ class DashboardBookController extends Controller
      */
     public function store(Request $request)
     {
-        return $request;
+        $validated = $request->validate([
+            'title' => 'required|unique:books',
+            'slug' => 'required|unique:books',
+            'genre_id' => 'required',
+            'writer_id' => 'required',
+            'publisher_id' => 'required',
+            'total_pages' => 'required|numeric|min:1',
+            'publish_year' => 'required',
+            'price' => 'required|numeric|min:1',
+            'synopsis' => 'required'
+        ]);
+        $validated['excerpt'] = Str::limit(strip_tags($request->synopsis), 100);
+
+        Book::create($validated);
+
+        return redirect('dashboard/books')->with('success', 'New data has been added!');
     }
 
     /**
