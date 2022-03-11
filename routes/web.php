@@ -41,5 +41,5 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('aut
 
 Route::get('dashboard/books/checkSlug', [DashboardBookController::class, 'checkSlug']);
 
-//dashbord route
+//dashbord book route
 Route::resource('/dashboard/books', DashboardBookController::class)->middleware('auth');

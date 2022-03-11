@@ -39,8 +39,12 @@
                             <td>{{ $book->writer->name }}</td>
                             <td>
                                 <a href="/dashboard/books/{{ $book->slug }}" class="badge bg-primary"><span data-feather="eye"></span></a>
-                                <a href="" class="badge bg-warning"><span data-feather="edit"></span></a>
-                                <a href="" class="badge bg-danger"><span data-feather="trash"></span></a>
+                                <a href="/dashboard/books/{{ $book->slug }}" class="badge bg-warning"><span data-feather="edit"></span></a>
+                                <form action="/dashboard/books/{{ $book->slug }}" style="display: inline" method="post">
+                                    @method('DELETE')
+                                    @csrf
+                                    <button class="badge bg-danger border-0"><span data-feather="trash"></span></button>
+                                </form>
                             </td>
                         </tr> 
                     @endforeach                               

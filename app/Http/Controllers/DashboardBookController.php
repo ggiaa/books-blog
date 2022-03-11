@@ -87,7 +87,12 @@ class DashboardBookController extends Controller
      */
     public function edit(Book $book)
     {
-        //
+        return view('dashboard.books.edit', [
+            'book' => $book,
+            "genres" => Genre::orderBy('genre_name', 'ASC')->get(),
+            "writers" => Writer::orderBy('name', 'ASC')->get(),
+            "publishers" => Publisher::orderBy('company_name', 'ASC')->get(),
+        ]);
     }
 
     /**
@@ -99,7 +104,27 @@ class DashboardBookController extends Controller
      */
     public function update(Request $request, Book $book)
     {
-        //
+        $rules = [
+            'title' => 'required',
+            'genre_id' => 'required',
+            'writer_id' => 'required',
+            'publisher_id' => 'required',
+            'total_pages' => 'required|numeric|min:1',
+            'publish_year' => 'required',
+            'price' => 'required|numeric|min:1',
+            'synopsis' => 'required'
+        ];
+
+        if ($request->slug != $book->slug) {
+            $rules['slug'] = 'required|unique:books';
+        };
+
+        $validated = $request->validate($rules);
+        $validated['excerpt'] = Str::limit(strip_tags($request->synopsis), 100);
+
+        Book::where('id', $book->id)->update($validated);
+
+        return redirect('dashboard/books')->with('success', 'Changes has been save!');
     }
 
     /**
@@ -110,7 +135,8 @@ class DashboardBookController extends Controller
      */
     public function destroy(Book $book)
     {
-        //
+        Book::destroy($book->id);
+        return redirect('dashboard/books')->with('success', 'Record has been deleted!');
     }
 
     public function checkSlug(Request $request)
