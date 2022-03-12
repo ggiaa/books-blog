@@ -13,6 +13,12 @@
                 Books
                 </a>
             </li>            
+            <li class="nav-item">
+                <a class="nav-link {{ Request::is('books') ? 'active' : '' }}" href="/books">
+                <span data-feather="power"></span>
+                Exit
+                </a>
+            </li>            
         </ul>
     </div>
 </nav>
